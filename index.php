@@ -7,15 +7,20 @@
  */
 require 'livre.php';
 
-$livre = new Livre("la chasseau cochon", "Romain", 300);
+$livre = new Livre("la chasseau cochon", "Romain", 200);
 $livre2 = new Livre("la chasse au faisan", "Romain", 200, 10);
-$livre3 = new Livre("la chasse au pigeon", "Romain", 250, 15);
+
 
 echo $livre;
 echo $livre->bool();
 echo $livre2;
 echo $livre2->bool();
-echo $livre3;
-echo $livre3->bool();
+echo $livre->comparaisonPage($livre2);
+
+
+$etagere1 = new Etagere(30, array($livre, $livre2));
+
+
+echo $etagere1->getTaille();
 
 

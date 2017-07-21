@@ -72,7 +72,7 @@ class Livre
     public function bool(){
         if($this->prix== -1){
             $this->bool=0;
-                return 'prix non fixé<hr> ';
+            return 'prix non fixé<hr> ';
         }
         else{
             $this->bool=1;
@@ -80,4 +80,38 @@ class Livre
         }
     }
 
+    public function comparaisonPage($livre2){
+        if($this->nbpages == $livre2->nbpages) {
+            return '0<hr>';
+        }
+        else if($this->nbpages < $livre2->nbpages) {
+            return '-1<hr>';
+        }
+        else {
+            return '1<hr>';
+        }
+    }
 }
+
+    class Etagere extends Livre
+    {
+
+        public $taillemax;
+        public $tab = array();
+
+        public function __construct(int $taillemax, $tab)
+        {
+            parent::__construct();
+            $this->taillemax = $taillemax;
+            $this->tab = $tab;
+        }
+
+        public function getTaille()
+        {
+            return 'Taille max de l\'étagère : ' . $this->taillemax . '<br>Nombre de livres sur l\'étagère : ' . count($this->tab) . '<br>';
+        }
+
+        public function setTab($livre){
+           array_push($this->tab, $livre);
+    }
+    }
